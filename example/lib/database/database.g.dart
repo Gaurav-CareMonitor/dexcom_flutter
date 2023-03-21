@@ -6,7 +6,7 @@ part of 'database.dart';
 // MoorGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
+// ignore_for_file: type=lint
 class DexcomAccount extends DataClass implements Insertable<DexcomAccount> {
   final String id;
   final String displayName;
@@ -110,12 +110,8 @@ class DexcomAccount extends DataClass implements Insertable<DexcomAccount> {
   }
 
   @override
-  int get hashCode => $mrjf($mrjc(
-      id.hashCode,
-      $mrjc(
-          displayName.hashCode,
-          $mrjc(createdAt.hashCode,
-              $mrjc(updatedAt.hashCode, deletedAt.hashCode)))));
+  int get hashCode =>
+      Object.hash(id, displayName, createdAt, updatedAt, deletedAt);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -217,30 +213,36 @@ class DexcomAccountsCompanion extends UpdateCompanion<DexcomAccount> {
 
 class $DexcomAccountsTable extends DexcomAccounts
     with TableInfo<$DexcomAccountsTable, DexcomAccount> {
-  final GeneratedDatabase _db;
+  @override
+  final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $DexcomAccountsTable(this._db, [this._alias]);
+  $DexcomAccountsTable(this.attachedDatabase, [this._alias]);
   final VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
   late final GeneratedColumn<String?> id = GeneratedColumn<String?>(
       'id', aliasedName, false,
-      typeName: 'TEXT', requiredDuringInsert: true);
+      type: const StringType(), requiredDuringInsert: true);
   final VerificationMeta _displayNameMeta =
       const VerificationMeta('displayName');
+  @override
   late final GeneratedColumn<String?> displayName = GeneratedColumn<String?>(
       'display_name', aliasedName, false,
-      typeName: 'TEXT', requiredDuringInsert: true);
+      type: const StringType(), requiredDuringInsert: true);
   final VerificationMeta _createdAtMeta = const VerificationMeta('createdAt');
+  @override
   late final GeneratedColumn<DateTime?> createdAt = GeneratedColumn<DateTime?>(
       'created_at', aliasedName, false,
-      typeName: 'INTEGER', requiredDuringInsert: true);
+      type: const IntType(), requiredDuringInsert: true);
   final VerificationMeta _updatedAtMeta = const VerificationMeta('updatedAt');
+  @override
   late final GeneratedColumn<DateTime?> updatedAt = GeneratedColumn<DateTime?>(
       'updated_at', aliasedName, false,
-      typeName: 'INTEGER', requiredDuringInsert: true);
+      type: const IntType(), requiredDuringInsert: true);
   final VerificationMeta _deletedAtMeta = const VerificationMeta('deletedAt');
+  @override
   late final GeneratedColumn<DateTime?> deletedAt = GeneratedColumn<DateTime?>(
       'deleted_at', aliasedName, true,
-      typeName: 'INTEGER', requiredDuringInsert: false);
+      type: const IntType(), requiredDuringInsert: false);
   @override
   List<GeneratedColumn> get $columns =>
       [id, displayName, createdAt, updatedAt, deletedAt];
@@ -289,13 +291,13 @@ class $DexcomAccountsTable extends DexcomAccounts
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
   DexcomAccount map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return DexcomAccount.fromData(data, _db,
+    return DexcomAccount.fromData(data, attachedDatabase,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
   @override
   $DexcomAccountsTable createAlias(String alias) {
-    return $DexcomAccountsTable(_db, alias);
+    return $DexcomAccountsTable(attachedDatabase, alias);
   }
 }
 
