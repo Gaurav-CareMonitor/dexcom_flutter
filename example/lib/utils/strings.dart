@@ -11,16 +11,16 @@ class Strings {
   static const String dexcomSettingsScreenName = "Dexcom Account";
 
   // Dexcom API Client ID
-  static const String dexcomClientID = 'XXX';
+  static const String dexcomClientID = 'cKGkX7oDACBjF9e98l8jit2zsjzMvS7B';
 
   // Dexcom API Client Secret
-  static const String dexcomClientSecret = 'XXX';
+  static const String dexcomClientSecret = 'dQmSSWaMYwR5GlqV';
 
   /// Auth Uri
-  static const String dexcomRedirectUri = 'XXX';
+  static const String dexcomRedirectUri = 'caremonitor://dexcom/auth';
 
   /// Callback scheme
-  static const String dexcomCallbackScheme = 'XXX';
+  static const String dexcomCallbackScheme = 'caremonitor';
 
   // Placeholders
   static const String hello = "Hello, World!";

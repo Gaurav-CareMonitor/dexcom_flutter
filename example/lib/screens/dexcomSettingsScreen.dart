@@ -1,12 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
-
-import 'package:provider/provider.dart';
-
 import 'package:dexcom_flutter/dexcom_flutter.dart';
-
 import 'package:dexcom_flutter_example/database/database.dart';
 import 'package:dexcom_flutter_example/utils/utils.dart';
+import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
 class DexcomSettingsScreen extends StatefulWidget {
   static const routeName = Strings.dexcomSettingsScreenRouteName;
@@ -121,7 +118,6 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
           Icons.account_circle,
         ),
         onPressed: () async {
-
           // authorize the app using dexcom_flutter
           await DexcomConnector.authorize(
               context: context,
@@ -141,7 +137,6 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
                 updatedAt: DateTime.now(),
                 deletedAt: null,
               ));
-          
         });
 
     return isConnected ? fabDisconnect : fabConnect;
@@ -175,15 +170,16 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
               height: 10,
             ),
             ListTile(
-              
-              title: TextButton(child: Text('Refresh token now'), onPressed: () async{
+                title: TextButton(
+              child: Text('Refresh token now'),
+              onPressed: () async {
                 await DexcomConnector.refreshToken(
-                  context: context,
-                  clientID: Strings.dexcomClientID,
-                  clientSecret: Strings.dexcomClientSecret,
-                  isSandbox: true);
-              },)
-            ),
+                    context: context,
+                    clientID: Strings.dexcomClientID,
+                    clientSecret: Strings.dexcomClientSecret,
+                    isSandbox: true);
+              },
+            )),
           ],
         ),
       ),
@@ -194,5 +190,4 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
     print('------ toHomepage ------');
     Navigator.pop(context);
   } //toHomepage
-
 } //_FitbitSettingsState
