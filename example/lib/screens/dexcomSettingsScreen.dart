@@ -62,7 +62,7 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
       leading: TextButton(
         child: Icon(
           Icons.arrow_back,
-          color: Theme.of(context).accentColor,
+          //  color: Theme.of(context).accentColor,
         ),
         onPressed: () => toHomepage(context),
       ),
@@ -93,7 +93,7 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
   Widget _buildFloatingActionButton(bool isConnected) {
     Widget fabDisconnect = FloatingActionButton(
       elevation: 2,
-      backgroundColor: Theme.of(context).errorColor,
+      backgroundColor: Theme.of(context).colorScheme.error,
       child: Icon(
         Icons.cancel,
       ),
@@ -125,7 +125,7 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
               clientSecret: Strings.dexcomClientSecret,
               redirectUri: Strings.dexcomRedirectUri,
               callbackUrlScheme: Strings.dexcomCallbackScheme,
-              isSandbox: true);
+              isSandbox: false);
 
           // insert a placeholder user within the database
           await GetIt.instance<MyDatabase>()
@@ -152,7 +152,7 @@ class _DexcomSettingsScreenState extends State<DexcomSettingsScreen> {
             ListTile(
               leading: Icon(
                 Icons.face,
-                color: Theme.of(context).accentColor,
+                //     color: Theme.of(context).accentColor,
               ),
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

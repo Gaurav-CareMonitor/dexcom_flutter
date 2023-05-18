@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ListTile(
             leading: Icon(
               Icons.settings_remote,
-              color: Theme.of(context).accentColor,
+              // color: Theme.of(context).accentColor,
             ),
             title: Text('Dexcom Account'),
             onTap: () {
@@ -229,5 +229,4 @@ class _HomeScreenState extends State<HomeScreen> {
     print('------ toDexcomSettings ------');
     Navigator.of(context).pushNamed(Strings.dexcomSettingsScreenRouteName);
   } // toDexcomSettings
-
 } // _HomeScreenState

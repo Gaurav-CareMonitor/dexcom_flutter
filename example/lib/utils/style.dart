@@ -16,7 +16,7 @@ class Style {
     ThemeData base = ThemeData.light();
 
     return base.copyWith(
-        accentColor: darkBlue,
+        //accentColor: darkBlue,
         primaryColor: lightBlue,
         buttonTheme: base.buttonTheme.copyWith(
           buttonColor: lightBlue,
@@ -31,7 +31,7 @@ class Style {
         // Texts
         textTheme: _buildTextTheme(base.textTheme),
         primaryTextTheme: _buildTextTheme(base.primaryTextTheme),
-        accentTextTheme: _buildTextTheme(base.accentTextTheme),
+        //   accentTextTheme: _buildTextTheme(base.accentTextTheme),
 
         // Icons
         iconTheme: base.iconTheme.copyWith(
@@ -40,12 +40,6 @@ class Style {
         primaryIconTheme: base.iconTheme.copyWith(
           color: darkBlue,
         ),
-        accentIconTheme: base.accentIconTheme.copyWith(
-          color: darkBlue,
-        ),
-
-        // Bottom app bars
-        bottomAppBarColor: lightBlue,
 
         // Input decorations
         inputDecorationTheme: InputDecorationTheme(
@@ -60,24 +54,36 @@ class Style {
           selectionColor: lightBlue,
           selectionHandleColor: Colors.blue,
         ),
-        errorColor: red,
 
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity);
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        colorScheme: ColorScheme(
+            error: red,
+            brightness: Brightness.light,
+            primary: lightBlue,
+            secondary: darkBlue,
+            surface: white,
+            onBackground: darkBlue,
+            onSurface: darkBlue,
+            onPrimary: darkBlue,
+            onSecondary: darkBlue,
+            onError: red,
+            background: white),
+        bottomAppBarTheme: BottomAppBarTheme(color: lightBlue));
   } // buildTheme
 
   static TextTheme _buildTextTheme(TextTheme base) {
     return base
         .copyWith(
-          headline5: base.headline5!.copyWith(
+          headlineSmall: base.headlineSmall!.copyWith(
             fontWeight: FontWeight.w500,
           ),
-          headline6: base.headline6!.copyWith(
+          titleLarge: base.titleLarge!.copyWith(
             fontSize: 18.0,
           ),
-          caption: base.caption!.copyWith(
+          bodySmall: base.bodySmall!.copyWith(
             fontSize: 14.0,
             fontWeight: FontWeight.w400,
           ),
@@ -88,5 +94,4 @@ class Style {
           bodyColor: darkBlue,
         );
   } // buildTextTheme
-
 } // Style
